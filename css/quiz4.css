@@ -41,16 +41,15 @@ nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    /* justify-content: center;
     text-align: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
 }
 
 /* nav ul - grid */
 
 nav ul li {
-    flex: 1;
     margin: 0 .4rem;
 }
 
@@ -65,7 +64,15 @@ nav ul li a {
 
 /* Dropdown navigation*/
 
+nav ul li ul{
+    overflow: hidden;
+    max-height: 0px;
+    transition: 2s max-height ease;
+}
 
+nav ul li:hover ul{
+    max-height: 200px;
+}
 
 /* Hover effects */
 
@@ -99,23 +106,31 @@ nav.menu ul li a:hover:after {
 }
 
 /* New */
-
+.lable, #toggle{
+    display: none;
+}
 /* media query */
 
 @media(max-width:700px) {
     header {
         display: block;
     }
+
+    .banner{
+        height: 65vh;
+    }
     .logo {
         display: flex;
         margin-left: 2rem;
     }
     nav ul {
-        flex-direction: column;
-        width: 100%;
+        display: block !important;
         background: rgba(0, 0, 0, 0.5);
-        display: none !important;
+        overflow: hidden;
+        max-height: 0px;
+        transition: 2s max-height ease; 
     }
+   
     .label {
         display: block !important;
         cursor: pointer;
@@ -135,8 +150,12 @@ nav.menu ul li a:hover:after {
         color: var(--text-color);
         z-index: 1;
     }
-    nav li ul {
-        visibility: hidden;
+
+    #toggle:checked+ul{
+        max-height: 325px;
+    }
+    nav ul li:hover ul {
+        max-height: 0px;
     }
 }
 
